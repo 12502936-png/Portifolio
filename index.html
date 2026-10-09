@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lucca Zatti</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <div id="auradocursor"></div>
+    <header id="header" class="header">
+        <ul class="ulheader">
+            <li class="liheader" id="lidark"><button id="bntdarkmode" onclick="darkmode()">Dark Mode</button></li>
+            <li class="liheader"><a href="#btnabout">About</a></li>
+            <li class="liheader"><a href="#btnskill">Skills</a></li>
+            <li class="liheader"><a href="#btnprojects">Projects</a></li>
+
+        </ul>
+    </header>
+
+    <main>
+
+        <section class="sec-apresentacao">
+
+            <div class="imgresenha"><img id="fotoportifolio" src="luccathebest.jpg" alt=""></div>
+
+            <div class="apresentacaodiv">
+                <div class="divdaapresentacaodiv">
+                    <div id="luccadiv">
+                        <h1>Hi, I'm</h1>
+                        <h1 class="nome">Lucca <span id="zattiefeito">Zatti</span> </h1>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <section class="sec-about" id="btnabout">
+            <div id="apresentação-div">
+                <h1>Sobre mim</h1>
+                <p>Atualmente, sou um Back-End Developer do Colégio e Faculdade COTEMIG. O meu principal objetivo é
+                    adquirir habilidades o suficiente para me tornar um Full Stack Developer, melhorar
+                    minhas habilidades de programação e design e me tornar o melhor programador.</p>
+            </div>
+
+            <div id="link-div">
+                <p>Trabalho com: <br>
+                    -Desenvolvimento de Sites <br>
+                    -Manipulação de Banco de Dados <br>
+                    -Programação em Back
+                </p>
+                <a class="cta" href="https://github.com/12502936-png">GitHub</a>
+            </div>
+
+        </section>
+
+
+        <section class="apresentskills" id="btnskill">
+            <h1>HARD <span>Skills</span></h1>
+            <p class="sub">Clique numa pasta para abrir.</p>
+            <div class="folders" id="folders">
+                <!-- Para quem queira replicar no portifólio, o Javascript irá preencher esta div. Veja ele pra ver -->
+            </div>
+        </section>
+
+
+        <section class="apresentskills">
+            <h1>SOFT <span>Skills</span></h1>
+            <p class="sub">Clique no card para abrir</p>
+
+            <div class="soft-folders">
+
+                <div class="card">
+                    <div class="icon-wrap">
+                        <svg class="gear" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <path
+                                d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z" />
+                            <path d="m15 5 4 4" />
+                        </svg>
+                    </div>
+
+                    <div class="text-wrap">
+                        <p class="title">Criatividade</p>
+                        <p class="desc">
+                            Gosto de encontrar soluções não óbvias para problemas técnicos, é a parte que eu mais gosto de desenvolver.
+                        </p>
+                    </div>
+                </div>
+
+
+                <div class="card">
+                    <div class="icon-wrap">
+                        <svg class="gear" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                            <path d="M16 3.128a4 4 0 0 1 0 7.744" />
+                            <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+                            <circle cx="9" cy="7" r="4" />
+                        </svg>
+                    </div>
+
+                    <div class="text-wrap">
+                        <p class="title">Trabalho em Equipe</p>
+                        <p class="desc">
+                            Sou ótimo trabalhando com outras pessoas. Também tenho liderança para interagir com várias pessoas.
+                        </p>
+                    </div>
+                </div>
+
+
+
+                <div class="card">
+                    <div class="icon-wrap">
+                        <svg class="gear" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.6">
+                            <path
+                                d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z" />
+                            <path d="M20 2v4" />
+                            <path d="M22 4h-4" />
+                            <circle cx="4" cy="20" r="2" />
+                        </svg>
+                    </div>
+
+
+
+                    <div class="text-wrap">
+                        <p class="title">Aprendizado</p>
+                        <p class="desc">
+                            Sou muito rápido em aprender e adquirir novas informações.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="icon-wrap">
+                        <svg class="gear" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                            <circle cx="12" cy="12" r="3.2" />
+                            <path
+                                d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1" />
+                        </svg>
+                    </div>
+
+                    <div class="text-wrap">
+                        <p class="title">Perfeccionismo</p>
+                        <p class="desc">
+                            Eu sempre procuro terminar meus trabalhos da melhor maneira possível.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+        <section class="sec_experiences">
+            <h1>Experiences</h1>
+            <div>
+                <p>Ainda nenhuma =(</p>
+            </div>
+
+            <div id="avisocontinua">
+                <h6>Continua...</h6>
+            </div>
+
+        </section>
+
+        <section class="sec_projects" id="btnprojects">
+            <h1>Projects</h1>
+
+            <div class="carrossel">
+                <div class="trilho" id="trilho-projetos">
+
+                    <article class="slide">
+                        <div class="projeto">
+                            <img src="ecomerce.jpg" alt="Captura de tela do projeto 1">
+                            <h2>E-comemrce</h2>
+                            <p>Um site simples de um E-Commerce que eu fiz</p>
+                            <div class="tags"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+                            <a class="cta" href="https://12502936-png.github.io/Sitelendario2/">Ver no GitHub</a>
+                        </div>
+                    </article>
+
+                    <article class="slide">
+                        <div class="projeto">
+                            <img src="projetoccharp.png" alt="Captura de tela do projeto 2">
+                            <h2>Banco C#</h2>
+                            <p>Um aplicativo de banco simples, feito exclusivamente em C#</p>
+                            <div class="tags"><span>C#</span></div>
+                        </div>
+                    </article>
+
+                </div>
+
+                <div class="controles">
+                    <button type="button" id="proj-prev" aria-label="Projeto anterior">&#8592;</button>
+                    <div class="pontos" id="pontos-projetos"></div>
+                    <button type="button" id="proj-next" aria-label="Próximo projeto">&#8594;</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="contato" id="btncontato">
+            <h1>Contato</h1>
+
+            <form class="form-contato" onsubmit="alerta(event)">
+                <div class="campo">
+                    <label for="nome">Nome</label>
+                    <input type="text" id="nome" name="nome" placeholder="Seu nome" required>
+                </div>
+
+                <div class="campo">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" name="email" placeholder="seu@email.com" required>
+                </div>
+
+                <div class="campo">
+                    <label for="telefone">Telefone</label>
+                    <input type="text" id="telefone" name="telefone" oninput="mascara_tel()"
+                        placeholder="+55 (00) 00000-0000" maxlength="20">
+                </div>
+
+                <div class="campo">
+                    <label for="mensagem">Mensagem</label>
+                    <textarea id="mensagem" name="mensagem" rows="5" placeholder="Escreva sua mensagem"
+                        required></textarea>
+                </div>
+
+                <button type="submit">Enviar</button>
+            </form>
+        </section>
+
+    </main>
+
+    <footer>
+        <h1>Me contate</h1>
+        <div id="redes-div">
+            <div>Email: 12502936@aluno.cotemig.com.br</div>
+            <div><a class="cta" href="https://github.com/12502936-png">GitHub</a></div>
+            <div><a class="cta" href="https://github.com/12502936-png">Instagram</a></div>
+            <div><a class="cta"
+                    href="https://www.linkedin.com/in/lucca-monteiro-rocha-zatti-2ba069418/?isSelfProfile=true">Linkedin</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>

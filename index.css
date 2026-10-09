@@ -1,0 +1,1073 @@
+/* =====================================================================
+   BASE
+   Antes: `* { font-size: 32px }` forçava 32px em TODOS os elementos, e cada
+   media query tinha que "brigar" com isso. Agora o tamanho base vive só no
+   <html> e escala sozinho com a largura da tela:
+     >= ~1250px  -> 32px (igual ao que você já tinha no desktop)
+     900px       -> ~26px   640px -> ~22px   <= 400px -> ~18px
+   Tudo que usa rem/em acompanha automaticamente.
+   ===================================================================== */
+* {
+    list-style: none;
+    scroll-behavior: smooth;
+}
+
+html {
+    font-size: clamp(17px, 12px + 1.6vw, 32px);
+    -webkit-text-size-adjust: 100%;
+}
+
+:root {
+    --blackvar: rgba(0, 0, 0, 1);
+    --whitevar: rgba(255, 255, 255, 0.993);
+    --goldpure: #E5b80b;
+    --luxorgold: #A7882C;
+    --grayves: #202229;
+}
+
+.darkmodeefeito {
+    --blackvar: rgba(255, 255, 255, 0.993);
+    --whitevar: rgba(0, 0, 0, 0.993);
+    --goldpure: #A7882C;
+    --luxorgold: #E5b80b;
+    --grayves: rgba(185, 185, 185, 0.993);
+}
+
+body {
+    background-color: var(--blackvar);
+    color: var(--goldpure);
+    transition: 0.5s;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, sans-serif;
+    padding: 48px 20px 80px;
+    overflow-x: hidden;
+    /* rede de segurança: nada empurra a página pro lado */
+}
+
+/* botões/inputs não herdam fonte sozinhos; isso mantém o comportamento antigo */
+button,
+input,
+textarea {
+    font-family: inherit;
+    font-size: inherit;
+}
+
+h1 {
+    text-align: center;
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+h6 {
+    font-size: 1em;
+    /* antes o `*` deixava o h6 com 32px; isso mantém */
+}
+
+p.sub {
+    text-align: center;
+    color: var(--whitevar);
+    margin: 0 0 40px;
+    font-size: 14px;
+}
+
+img {
+    max-width: 100%;
+}
+
+a {
+    text-decoration: none;
+    color: var(--blackvar);
+}
+
+section {
+    border-color: #A7882C;
+    margin: 10vh;
+}
+
+.cta {
+    background-color: #A7882C;
+    color: black;
+}
+
+
+/* =====================================================================
+   HEADER / MENU
+   ===================================================================== */
+.header {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    color: var(--goldpure);
+    transition: 0.5s;
+}
+
+.ulheader {
+    background-color: var(--grayves);
+    display: flex;
+    flex-wrap: wrap;
+    /* se não couber, quebra linha em vez de vazar */
+    justify-content: center;
+    border-radius: 15px;
+    align-items: center;
+    transition: 0.2s;
+
+    li {
+        background-color: var(--goldpure);
+        color: black;
+        margin: 10px;
+        border-radius: 15px;
+        transition: 0.5s;
+    }
+}
+
+#lidark {
+    background-color: transparent;
+
+    button {
+        border-radius: 12px;
+    }
+}
+
+#bntdarkmode {
+    background-color: var(--blackvar);
+    color: var(--goldpure);
+    transition: 0.5s;
+}
+
+
+/* =====================================================================
+   APRESENTAÇÃO (foto + nome)
+   ===================================================================== */
+.sec-apresentacao {
+    color: var(--whitevar);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.apresentacaodiv {
+    order: 0;
+    margin-left: 100px;
+}
+
+.imgresenha {
+    display: inline-block;
+}
+
+#luccadiv {
+    width: max-content;
+    font-size: 30px;
+}
+
+.nome {
+    display: inline-block;
+    transition: 0.5s;
+    color: var(--whitevar);
+}
+
+.nome:hover {
+    transform: scale(1.2);
+    color: var(--goldpure);
+}
+
+#zattiefeito {
+    display: inline-block;
+    background-image: linear-gradient(to right, var(--goldpure), var(--luxorgold));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+#fotoportifolio {
+    transition: opacity 0.5s ease-in-out;
+    height: 200px;
+    width: 200px;
+    object-fit: cover;
+    /* foto nunca fica esticada, mesmo que não seja quadrada */
+    opacity: 1;
+}
+
+.fotoescondida {
+    height: 200px;
+    width: 200px;
+    opacity: 0;
+}
+
+
+/* =====================================================================
+   SOBRE
+   ===================================================================== */
+.sec-about {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    /* minmax(0,...) impede texto longo de alargar a coluna */
+}
+
+#link-div {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.sec_experiences {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#avisocontinua {
+    color: var(--whitevar);
+    border: 1px solid;
+    border-color: #A7882C;
+}
+
+
+/* =====================================================================
+   HARD SKILLS (pastas)
+   ===================================================================== */
+.apresentskills>div {
+    background-image: -moz-radial-gradient(var(--goldpure), var(--blackvar));
+    border-radius: 10px;
+    border: 1vh solid;
+    border-color: #A7882C;
+}
+
+.folders {
+    background-image: radial-gradient(var(--luxorgold), var(--blackvar));
+    max-width: 780px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 44px 24px;
+    justify-items: center;
+    align-items: end;
+    margin-bottom: 5vh;
+    border-radius: 10px;
+    border: 1vh solid;
+    border-color: #A7882C;
+}
+
+.folder-img {
+    transform: translate(-50%, -50%);
+    top: 23%;
+    object-fit: contain;
+    position: absolute;
+    width: 35px;
+    height: 35px;
+}
+
+.skill-folder {
+    --spread: 64px;
+    /* distância horizontal entre arquivos no leque */
+    --lift: 150px;
+    /* altura base que os arquivos sobem */
+    --arch-amt: 32px;
+    /* quanto o meio do leque sobe a mais (curva) */
+    --rot-step: 3deg;
+    /* rotação por posição */
+    position: relative;
+    width: 100%;
+    min-height: 350px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.folder-files {
+    position: absolute;
+    left: 50%;
+    bottom: 72px;
+    width: 0;
+    height: 0;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.skill-folder.open .folder-files {
+    z-index: 5;
+}
+
+.ff-file {
+    /* essas 3 variáveis vêm do JS, calculadas por arquivo */
+    --fx: calc(var(--off) * var(--spread));
+    --fy: calc(-1 * (var(--lift) + var(--arch) * var(--arch-amt)));
+    --fr: calc(var(--off) * var(--rot-step));
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 78px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 7px 8px;
+    border-radius: 12px;
+    background: linear-gradient(180deg, var(--blackvar), var(--grayves));
+    border: 1px solid var(--luxorgold);
+    box-shadow: 0 14px 30px #0006;
+    transform-origin: 50% 100%;
+    transform: translate(-50%) scale(.8);
+    opacity: 0;
+    transition: transform .55s cubic-bezier(.22, 1, .36, 1),
+        opacity .38s ease,
+        border-color .22s ease;
+}
+
+.folder-centerimg {
+    position: absolute;
+    left: 35%;
+    top: 35%;
+    transform: translate(-50%, -50%);
+    width: 120px;
+    height: auto;
+    object-fit: contain;
+}
+
+.skill-folder.open .ff-file {
+    opacity: 1;
+    transform: translate(calc(-50% + var(--fx)), var(--fy)) rotate(var(--fr)) scale(1);
+    transition-delay: var(--fd, 0s);
+    border-color: var(--luxorgold);
+    pointer-events: auto;
+}
+
+.skill-folder.open .ff-file:hover {
+    margin-bottom: 10px;
+    z-index: 9;
+    transition: 0.5s;
+}
+
+.ff-icon {
+    font-size: 20px;
+    line-height: 1;
+}
+
+.ff-name {
+    font-family: "JetBrains Mono", ui-monospace, Menlo, monospace;
+    font-size: 14px;
+    font-weight: 600;
+    padding-top: 15px;
+    color: var(--text-soft);
+    text-align: center;
+}
+
+.ff-ext {
+    font-family: "JetBrains Mono", ui-monospace, Menlo, monospace;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: .04em;
+    margin-top: -7px;
+    padding: 2px 6px;
+    border-radius: 5px;
+    color: var(--goldpure);
+    border: 1px solid var(--luxorgold);
+    background: var(--blackvar);
+}
+
+/* ---- a pasta em si: perspectiva + tampa que abre ---- */
+.folder-btn {
+    position: relative;
+    z-index: 2;
+    width: clamp(184px, 40vw, 244px);
+    max-width: 100%;
+    height: 184px;
+    margin-bottom: 6px;
+    padding: 0;
+    border: 0;
+    background: none;
+    cursor: pointer;
+    perspective: 820px;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.folder-shape {
+    position: absolute;
+    inset: 0;
+    transform-style: preserve-3d;
+}
+
+.folder-back {
+    position: absolute;
+    inset: 0;
+    border-radius: 6px 14px 14px;
+    background: black;
+    border: 1px solid var(--luxorgold);
+}
+
+.folder-tab {
+    position: absolute;
+    left: 4px;
+    top: -12px;
+    width: 42%;
+    height: 18px;
+    border-radius: 8px 10px 0 0;
+    background: linear-gradient(180deg, var(--goldpure), var(--luxorgold));
+    border: 1px solid var(--luxorgold);
+    border-bottom: 0;
+}
+
+.folder-front {
+    position: absolute;
+    inset: 0;
+    border-radius: 6px 14px 14px;
+    background: var(--goldpure);
+    border: 1px solid var(--luxorgold);
+    box-shadow: 0 20px 38px -20px var(--goldpure);
+    transform-origin: 50% 100%;
+    transform: translateZ(1px) rotateX(0deg);
+    transition: transform .5s cubic-bezier(.22, 1, .36, 1), border-color .4s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 16px;
+    backface-visibility: hidden;
+    overflow: hidden;
+    text-align: left;
+}
+
+.skill-folder.open .folder-front {
+    transform: translateZ(1px) rotateX(-48deg);
+    border-color: #A7882C;
+}
+
+.folder-ico {
+    font-size: 34px;
+}
+
+.folder-label {
+    font-weight: 700;
+    font-size: 17px;
+}
+
+.folder-detail {
+    font-family: "JetBrains Mono", ui-monospace, Menlo, monospace;
+    font-size: 10px;
+    color: black;
+}
+
+@media (hover: hover) {
+    .skill-folder:not(.open) .folder-btn:hover .folder-front {
+        transform: translateZ(1px) translateY(-3px) rotateX(0deg);
+        border-color: var(--border-strong);
+    }
+}
+
+
+/* =====================================================================
+   SOFT SKILLS (cards)
+   ===================================================================== */
+.soft-folders {
+    max-width: 1320px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: repeat(2, 1fr);
+    gap: 44px 24px;
+    justify-items: center;
+    align-items: center;
+    margin-bottom: 5vh;
+    border-radius: 10px;
+    border: 1vh solid;
+    border-color: #A7882C;
+    padding: 40px 20px;
+}
+
+.card {
+    position: relative;
+    box-sizing: border-box;
+    width: 100%;
+    /* antes era 420px fixo -> vazava da tela entre ~900 e ~1100px */
+    max-width: 420px;
+    height: 270px;
+    border-radius: 14px;
+    border: 1px solid;
+    border-color: #A7882C;
+    background: var(--blackvar);
+    overflow: hidden;
+    cursor: pointer;
+    padding: 0;
+    container-type: inline-size;
+    /* permite usar cqw: unidade relativa à LARGURA DO CARD (ver .title/.desc) */
+}
+
+.icon-wrap {
+    position: absolute;
+    left: 24px;
+    top: 50%;
+    margin-top: -26px;
+    width: 52px;
+    height: 52px;
+    z-index: 2;
+    transition: left 0.7s cubic-bezier(0.4, 0.1, 0.2, 1);
+}
+
+.card.active .icon-wrap {
+    left: calc(100% - 24px - 52px);
+}
+
+.gear {
+    width: 100%;
+    height: 100%;
+    color: var(--accent);
+    transition: transform 0.7s ease;
+}
+
+.card.active .gear {
+    transform: rotate(360deg);
+}
+
+/* Antes o .text-wrap tinha height: 60px, então textos maiores que isso (comuns
+   no celular, onde a linha quebra mais) transbordavam. Agora ele ocupa a altura
+   inteira do card e título/descrição ficam centralizados dentro dele. */
+.text-wrap {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 94px;
+    right: 24px;
+    z-index: 1;
+    transition: left 0.7s cubic-bezier(0.4, 0.1, 0.2, 1),
+        right 0.7s cubic-bezier(0.4, 0.1, 0.2, 1);
+}
+
+.card.active .text-wrap {
+    left: 24px;
+    right: 94px;
+}
+
+.title,
+.desc {
+    position: absolute;
+    inset: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    text-align: left;
+    transition: opacity 0.45s ease;
+}
+
+.title {
+    font-size: min(1.05rem, 6.8cqw);
+    font-weight: 600;
+    opacity: 1;
+}
+
+.card.active .title {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.desc {
+    font-size: min(0.85rem, 6.4cqw);
+    /* nunca maior que 0.85rem, mas encolhe junto se o card ficar estreito */
+    line-height: 1.5;
+    color: var(--whitevar);
+    opacity: 0;
+    pointer-events: none;
+    transition-delay: 0.15s;
+}
+
+.card.active .desc {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.hint {
+    font-size: 0.72rem;
+    margin-top: 4px;
+}
+
+
+/* =====================================================================
+   PROJETOS (carrossel)
+   ===================================================================== */
+.carrossel {
+    max-width: 1320px;
+    margin: 0 auto;
+}
+
+.trilho {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+}
+
+.trilho::-webkit-scrollbar {
+    display: none;
+}
+
+.slide {
+    flex: 0 0 100%;
+    scroll-snap-align: center;
+    box-sizing: border-box;
+    padding: 0 8px;
+}
+
+.projeto {
+    border: 1vh solid #A7882C;
+    border-radius: 14px;
+    padding: 24px;
+    background: var(--blackvar);
+    color: var(--whitevar);
+    text-align: center;
+}
+
+.projeto img {
+    width: 100%;
+    height: auto;
+    max-height: 60vh;
+    /* print gigante não domina a tela */
+    object-fit: contain;
+    border-radius: 10px;
+    margin-bottom: 12px;
+}
+
+.projeto h2 {
+    font-size: 22px;
+    color: var(--goldpure);
+    margin: 0 0 8px;
+}
+
+.projeto p {
+    font-size: 16px;
+    margin: 0 0 12px;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.tags span {
+    font-size: 13px;
+    padding: 2px 10px;
+    border: 1px solid var(--luxorgold);
+    border-radius: 999px;
+    color: var(--goldpure);
+}
+
+.projeto .cta {
+    display: inline-block;
+    font-size: 16px;
+    padding: 8px 18px;
+    border-radius: 12px;
+}
+
+.controles {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 16px;
+}
+
+.controles button {
+    font-size: 20px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid #A7882C;
+    background: transparent;
+    color: var(--goldpure);
+    cursor: pointer;
+}
+
+.pontos {
+    display: flex;
+    gap: 8px;
+}
+
+.ponto {
+    width: 10px;
+    height: 10px;
+    padding: 0;
+    border: 1px solid #A7882C;
+    border-radius: 50%;
+    background: transparent;
+    cursor: pointer;
+}
+
+.ponto.ativo {
+    background: #A7882C;
+}
+
+
+/* =====================================================================
+   CONTATO (formulário)
+   ===================================================================== */
+.contato {
+    background-image: radial-gradient(var(--luxorgold), var(--goldpure));
+    color: black;
+    /* texto escuro funciona nos dois temas, pois o fundo é sempre dourado */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+    border-radius: 10px;
+}
+
+.form-contato {
+    width: min(100%, 480px);
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.contato label,
+.contato input,
+.contato textarea,
+.contato button {
+    font-size: 16px;
+    /* 16px também evita o zoom automático do iPhone ao focar o campo */
+    font-family: inherit;
+}
+
+.contato input,
+.contato textarea {
+    background: transparent;
+    color: black;
+    border: 0;
+    border-bottom: 1px solid black;
+    padding: 8px 4px;
+    box-sizing: border-box;
+    width: 100%;
+    outline: none;
+}
+
+.contato input:hover,
+.contato input:focus,
+.contato textarea:hover,
+.contato textarea:focus {
+    border: 0;
+    border-bottom: 2px solid black;
+}
+
+.contato ::placeholder {
+    color: rgba(0, 0, 0, 0.55);
+}
+
+.contato button {
+    background: black;
+    color: var(--goldpure);
+    border: 0;
+    border-radius: 12px;
+    padding: 12px 24px;
+    cursor: pointer;
+    align-self: flex-start;
+}
+
+input {
+    border: 0px;
+    border-bottom: solid 1px
+}
+
+input:hover {
+    border: solid 1px #A7882C
+}
+
+
+/* =====================================================================
+   FOOTER
+   ===================================================================== */
+footer {
+    background-color: var(--grayves);
+    display: flex;
+    color: #A7882C;
+    flex-direction: column;
+}
+
+#redes-div {
+    display: flex;
+    flex-wrap: wrap;
+    /* antes não quebrava linha: e-mail + 3 botões vazavam */
+    justify-content: space-around;
+    align-items: center;
+    gap: 12px 16px;
+}
+
+#redes-div div {
+    overflow-wrap: anywhere;
+    /* e-mail longo quebra em vez de empurrar a página */
+}
+
+
+/* =====================================================================
+   RESPONSIVO
+   (o tamanho da fonte base já escala sozinho lá em cima no `html`)
+   ===================================================================== */
+
+/* ---------- TABLET / TELA MÉDIA (até 900px) ---------- */
+@media screen and (max-width: 900px) {
+    body {
+        padding: 32px 16px 60px;
+    }
+
+    section {
+        margin: 6vh 0;
+    }
+
+    .ulheader {
+        padding: 6px;
+        margin: 0;
+        /* tira o padding/margin padrão de <ul> que descentralizava o menu */
+    }
+
+    .liheader a {
+        padding: 0 10px;
+        display: inline-block;
+    }
+
+    .cta {
+        display: inline-block;
+        padding: 6px 14px;
+        border-radius: 10px;
+        /* área de toque maior pros links */
+    }
+
+    .sec-apresentacao {
+        flex-direction: column;
+        align-items: center;
+        gap: 24px;
+        text-align: center;
+    }
+
+    .apresentacaodiv {
+        margin-left: 0;
+    }
+
+    #luccadiv {
+        width: auto;
+    }
+
+    #fotoportifolio {
+        width: min(60vw, 260px);
+        height: min(60vw, 260px);
+        /* a regra antiga `.imgresenha img` perdia pro #fotoportifolio (ID),
+           por isso a foto nunca crescia; agora usa o próprio ID */
+    }
+
+    /* Sobre: 1 coluna (antes continuava em 2 colunas no celular) */
+    .sec-about {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 24px;
+        text-align: center;
+    }
+
+    #apresentação-div>p {
+        width: 100%;
+    }
+
+    /* Hard skills: fan um pouco mais fechado pra caber em 2 colunas estreitas */
+    .skill-folder {
+        --spread: 56px;
+    }
+
+    /* Soft skills: 1 coluna */
+    .soft-folders {
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-rows: auto;
+        max-width: 100%;
+    }
+}
+
+
+/* ---------- CELULAR (até 640px) ---------- */
+@media screen and (max-width: 640px) {
+    body {
+        padding: 20px 12px 48px;
+    }
+
+    section {
+        margin: 5vh 0;
+    }
+
+    /* menu */
+    .ulheader {
+        padding: 4px;
+    }
+
+    .ulheader li {
+        margin: 5px;
+    }
+
+    .ulheader li,
+    .ulheader a,
+    #bntdarkmode {
+        font-size: 15px;
+    }
+
+    #bntdarkmode {
+        padding: 4px 8px;
+    }
+
+    .liheader a {
+        padding: 0 8px;
+        display: inline-block;
+    }
+
+    #luccadiv {
+        font-size: 22px;
+    }
+
+    /* hard skills */
+    .folders {
+        grid-template-columns: minmax(0, 1fr);
+        max-width: 100%;
+        gap: 24px 12px;
+        padding: 20px 8px;
+    }
+
+    .skill-folder {
+        --spread: 50px;
+        --lift: 130px;
+        --arch-amt: 22px;
+        --rot-step: 2.5deg;
+        min-height: 330px;
+    }
+
+    .ff-file {
+        width: 66px;
+        padding: 8px 4px 6px;
+    }
+
+    .ff-name {
+        font-size: 11px;
+    }
+
+    .ff-ext {
+        font-size: 10px;
+    }
+
+    .folder-img {
+        width: 28px;
+        height: 28px;
+    }
+
+    /* soft skills */
+    .soft-folders {
+        padding: 20px 10px;
+        gap: 20px;
+    }
+
+    .card {
+        height: clamp(230px, 62vw, 270px);
+        /* sobe a altura conforme a largura, já que o texto quebra mais */
+    }
+
+    .icon-wrap {
+        left: 16px;
+        width: 44px;
+        height: 44px;
+        margin-top: -22px;
+    }
+
+    .card.active .icon-wrap {
+        left: calc(100% - 16px - 44px);
+    }
+
+    .text-wrap {
+        left: 74px;
+        right: 16px;
+    }
+
+    .card.active .text-wrap {
+        left: 16px;
+        right: 74px;
+    }
+
+    .title {
+        font-size: min(1rem, 6.8cqw);
+    }
+
+    .desc {
+        font-size: min(0.78rem, 6.4cqw);
+        line-height: 1.4;
+    }
+
+    /* projetos */
+    .projeto {
+        padding: 14px;
+    }
+
+    .projeto h2 {
+        font-size: 18px;
+    }
+
+    .projeto p {
+        font-size: 14px;
+    }
+
+    .tags span {
+        font-size: 12px;
+    }
+
+    .projeto .cta {
+        font-size: 14px;
+    }
+
+    .controles {
+        gap: 12px;
+    }
+
+    /* contato */
+    .contato {
+        padding: 28px 14px;
+    }
+
+    .form-contato {
+        gap: 18px;
+    }
+
+    .contato button {
+        width: 100%;
+        align-self: stretch;
+    }
+
+    /* footer */
+    footer {
+        align-items: center;
+        gap: 8px;
+        padding: 12px;
+        text-align: center;
+        font-size: 14px;
+        word-break: break-word;
+    }
+
+    #redes-div {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    footer div,
+    footer a {
+        font-size: 14px;
+    }
+}
+
+
+/* ---------- CELULAR PEQUENO (até 400px) ---------- */
+@media screen and (max-width: 400px) {
+    .skill-folder {
+        --spread: 44px;
+        --lift: 120px;
+    }
+
+    .ff-file {
+        width: 58px;
+    }
+
+    .folder-btn {
+        width: clamp(170px, 70vw, 220px);
+    }
+}
